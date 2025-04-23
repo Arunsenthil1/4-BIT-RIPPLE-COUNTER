@@ -25,16 +25,35 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 **Procedure**
 
 /* write all the steps invloved */
-
+```
+1.Open quartus II and create New project wizard.
+2. Write the program in Verilog HDL file and run the program.
+3. Download the RTL viewer
+4. Now open university program VWF and download waveform after the execution. 
+```
 **PROGRAM**
 
 /* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
 
- Developed by: RegisterNumber:
+ Developed by:ARUN.S RegisterNumber:212224230023
 */
+![435462968-a2960aee-c520-4add-b4ee-1755f0030a54](https://github.com/user-attachments/assets/e07c6e9f-7f19-4404-85de-d390b9e1abd9)
+
+endmodule // Full Adder Module module full_adder ( input A, B, Cin, // Inputs: A, B, and Carry-in output Sum, Cout // Outputs: Sum and Carry-out );
+![435462987-563a8ca9-6c57-49c9-a4e7-d568a379cb53](https://github.com/user-attachments/assets/f5cb2c57-f74c-4a50-961b-6d9369172c66)
+
+end module 
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 
+
+![435463056-67b5c71b-2efc-4c1c-8a2e-8866bef2a283](https://github.com/user-attachments/assets/c315baa2-c574-4617-9c76-51cd179e34f3)
+
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
 
+
+![435463065-ad5f42e7-8ebb-4579-800c-d3c35725303f](https://github.com/user-attachments/assets/028d1af7-5bc9-403e-840b-4bd7558d82cd)
+
 **RESULTS**
+
+Thus the 4 Bit Ripple Counter is executed using verilog and verified with its Truth table.
