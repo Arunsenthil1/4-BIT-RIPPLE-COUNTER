@@ -23,37 +23,81 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 ![image](https://github.com/naavaneetha/4-BIT-RIPPLE-COUNTER/assets/154305477/85e1958a-2fc1-49bb-9a9f-d58ccbf3663c)
 
 **Procedure**
+1.Type the program in Quartus software.                                                                                                                                                                     
+2.Compile and run the program.                                                                                                                                                                                     
+3.Generate the RTL schematic and save the logic diagram.                                                                                                                                                             
+4.Create nodes for inputs and outputs to generate the timing diagram.                                                                                                                                           
+5.For different input combinations generate the timing diagram.
 
-/* write all the steps invloved */
-```
-1.Open quartus II and create New project wizard.
-2. Write the program in Verilog HDL file and run the program.
-3. Download the RTL viewer
-4. Now open university program VWF and download waveform after the execution. 
-```
+
 **PROGRAM**
+```
+module exp12(
+   input wire clk,  // Clock input
+   output reg [3:0] count // 4-bit counter output
+);
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
+// Counter logic
+always @(posedge clk) begin
+   if (count == 4'b1111) // Reset when count reaches 15
+       count <= 4'b0000;
+   else
+       count <= count + 1; // Increment count
+end
 
- Developed by:ARUN.S RegisterNumber:212224230023
-*/
-![435462968-a2960aee-c520-4add-b4ee-1755f0030a54](https://github.com/user-attachments/assets/e07c6e9f-7f19-4404-85de-d390b9e1abd9)
+endmodule
 
-endmodule // Full Adder Module module full_adder ( input A, B, Cin, // Inputs: A, B, and Carry-in output Sum, Cout // Outputs: Sum and Carry-out );
-![435462987-563a8ca9-6c57-49c9-a4e7-d568a379cb53](https://github.com/user-attachments/assets/f5cb2c57-f74c-4a50-961b-6d9369172c66)
+// Testbench
+module RippleCounter_tb;
 
-end module 
+// Inputs
+reg clk;
+
+// Outputs
+wire [3:0] count;
+
+// Instantiate the counter
+RippleCounter uut(
+   .clk(clk),
+   .count(count)
+);
+
+// Clock generation
+initial begin
+   clk = 0;
+   forever #5 clk = ~clk; // Toggle clock every 5 time units
+end
+
+// Stimulus
+initial begin
+   // Wait for a few clock cycles
+   #10;
+   
+   // Display header
+   $display("Time | Count");
+   $display("-----------------");
+   
+   // Functional table testing
+   // Increment count 16 times and display the count
+   repeat (16) begin
+       #5; // Wait for one clock cycle
+       $display("%4d | %b", $time, count);
+   end
+   
+   // End simulation
+   $finish;
+end
+
+endmodule
+```
+
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
+![image](https://github.com/user-attachments/assets/2571db27-9bfe-4466-97b5-c61dcfa4f662)
 
-
-![435463056-67b5c71b-2efc-4c1c-8a2e-8866bef2a283](https://github.com/user-attachments/assets/c315baa2-c574-4617-9c76-51cd179e34f3)
 
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
-
-
-![435463065-ad5f42e7-8ebb-4579-800c-d3c35725303f](https://github.com/user-attachments/assets/028d1af7-5bc9-403e-840b-4bd7558d82cd)
+![image](https://github.com/user-attachments/assets/eb2b7a0c-9987-4617-a70b-0fa82d6d9006)
 
 **RESULTS**
-
-Thus the 4 Bit Ripple Counter is executed using verilog and verified with its Truth table.
+4 Bit Ripple Counter using verilog and validating their functionality using their functional tables
